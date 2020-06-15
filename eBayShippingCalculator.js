@@ -20,8 +20,8 @@
  */
 
 (function () {
+  // Sometimes the lists are different. Beats me as to why
   var list = $('#ListViewInner').length > 0 ?  $('#ListViewInner'):$('.srp-results')
-  console.log(list)
   function getShipping(val) {
 		var shipping = $(val).find('.lvshipping').text().trim() || $(val).find('.s-item__shipping').text().trim()
   	return shipping.replace(/^\D+/g, '').replace(',', '')
@@ -33,16 +33,17 @@
   }
 
 	list.children('li').each((i, val) => {
+    // Get the objects, there are (from what I've seen) two different possibilities. Maybe there are more, idk
     var shipObj = $(val).find('.lvshipping').length > 0 ? $(val).find('.lvshipping'):$(val).find('.s-item__shipping')
     var priceObj = $(val).find('.lvprice').length > 0 ? $(val).find('.lvprice'):$(val).find('.s-item__price')
     
-    var currency = $(val).find('.lvprice').text().trim().split('$')[0]
+    // Get the currency for consistency I guess
+    var currency = $(priceObj).text().trim().split('$')[0]
 		var price = parseFloat(getPrice(val))
     var shipping = parseFloat(getShipping(val))
     
+    // If there is a shipping price (parseFloat returns null if there isn't any float), change it up
     if(shipping) {
-    	console.log('Shipping: ' + shipping)
-			console.log('Price: ' + price)
 			$(shipObj).text(`Shipping was: $${shipping}`)
       $(priceObj).text(`${currency} $${Math.round((price+shipping + Number.EPSILON) * 100)/100}`)
     }
