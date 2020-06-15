@@ -3,8 +3,8 @@
 // @namespace    http://tampermonkey.net/
 // @version      1.1
 // @author       SpikeGD
-// @include 		 https://www.ebay.ca/*
-// @require 		 https://code.jquery.com/jquery-3.4.1.min.js
+// @include 	 https://www.ebay.ca/*
+// @require 	 https://code.jquery.com/jquery-3.4.1.min.js
 // @grant        none
 // @run-at       document-idle
 // ==/UserScript==
@@ -39,12 +39,12 @@
     
     // Get the currency for consistency I guess
     var currency = $(priceObj).text().trim().split('$')[0]
-		var price = parseFloat(getPrice(val))
+    var price = parseFloat(getPrice(val))
     var shipping = parseFloat(getShipping(val))
     
     // If there is a shipping price (parseFloat returns null if there isn't any float), change it up
     if(shipping) {
-			$(shipObj).text(`Shipping was: $${shipping}`)
+      $(shipObj).text(`Shipping was: $${shipping}`)
       $(priceObj).text(`${currency} $${Math.round((price+shipping + Number.EPSILON) * 100)/100}`)
     }
   })
