@@ -1,2 +1,4 @@
 # userscripts
-Some of the userscripts I make/have made to make my life easier
+Some of the userscripts I make/have made to make my life easier.
+
+Feel free to use them obviously.
