@@ -11,3 +11,6 @@ Works on multiple places eBay displays lists of items (search pages, seller item
 
 ## quoraBrowser.js
 Allows you to browse multiple questions on Quora withough having that annoying popup. Simply appends `?share=1` to the end of the current URL
+
+## redirectPauser.js
+Trying to watch network activity just before a page redirects? Just want to pause the page on redirects just in case? Use this!
